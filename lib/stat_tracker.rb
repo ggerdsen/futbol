@@ -1,8 +1,8 @@
 
 require "csv"
-require "./lib/game_collection"
-require "./lib/team_collection"
-require "./lib/game_team_collection"
+require_relative "./game_collection"
+require_relative "./team_collection"
+require_relative "./game_team_collection"
 
 class StatTracker
 
@@ -71,8 +71,7 @@ class StatTracker
   def average_goals_per_game
     all_goals = 0.00
     games.each do |game|
-      all_goals += game.home_goals
-      all_goals += game.away_goals
+      all_goals += (game.home_goals + game.away_goals)
     end
     (all_goals / games.count).round(2)
   end
