@@ -191,7 +191,7 @@ class StatTrackerTest < Minitest::Test
       }
     assert_equal expected, @stat_tracker.coach_per_total_win("20122013")
   end
-  
+
 # start game stat tests
   def test_highest_total_score
     assert_equal 6, @stat_tracker.highest_total_score
@@ -300,7 +300,7 @@ class StatTrackerTest < Minitest::Test
   def test_tracker_has_the_least_tackles
     assert_equal "Sporting Kansas City", @stat_tracker.fewest_tackles("20122013")
   end
-  
+
   def test_it_returns_average_win_percentage_string
     assert_equal 0.49, @stat_tracker.average_win_percentage(6)
   end
