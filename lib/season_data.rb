@@ -1,5 +1,6 @@
+require_relative "./league"
 
-class SeasonData
+class SeasonStats < LeagueStats
 
   def all_games_per_season(season_id)
     games.select do |game|

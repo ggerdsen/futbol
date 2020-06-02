@@ -1,6 +1,31 @@
-require_relative "./lib/league_collection"
+require "csv"
 
-class League
+require_relative "./game"
+require_relative "./team"
+require_relative "./game_team"
+
+require_relative "./modules/fetchable"
+
+class LeagueStats
+  include Fetchable
+
+  def initialize(game_path, team_path, game_team_path)
+    @games = fetch_data(game_path, Game)
+    @teams = fetch_data(team_path, Team)
+    @game_teams = fetch_data(game_team_path, GameTeam)
+  end
+
+  def games
+    @g ||= @games
+  end
+
+  def teams
+    @g_t ||= @teams
+  end
+
+  def game_teams
+    @gt ||= @game_teams
+  end
 
   def count_of_teams
     teams.count

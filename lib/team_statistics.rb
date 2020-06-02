@@ -1,6 +1,6 @@
-require_relative "./lib/league_collection"
+require_relative "./game_stats"
 
-class TeamStatistics
+class TeamStats < GameStats
 
   def team_info(team_id)
     return_hash = {}
