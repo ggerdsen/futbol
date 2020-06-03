@@ -1,14 +1,11 @@
-class GameStats
-  def initialize(location)
-    @games = GameCollection.new(location[:games])
+require_relative "./season_data"
+
+class GameStats < SeasonStats
+  def initialize(game_path, team_path, game_team_path)
     @game_data = Hash.new(0)
     @goals_by_season = Hash.new(0)
     @games_by_season = Hash.new(0)
-    collect_data
-  end
-
-  def games
-    @games.all
+    super(game_path, team_path, game_team_path)
   end
 
   def collect_data
