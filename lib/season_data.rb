@@ -21,12 +21,6 @@ class SeasonStats < LeagueStats
     end
   end
 
-  def games_by_head_coach(season_id)#
-    all_game_teams_per_season(season_id).group_by do |game_team|
-      game_team.head_coach
-    end
-  end
-
   def coach_per_total_win(season_id)
     games_by_head_coach(season_id).transform_values do | games|
       winning_games= games.select{|game| game.result == "WIN"}
@@ -58,7 +52,7 @@ class SeasonStats < LeagueStats
     team_id_group(season_id).transform_values do |value|
       total_shots = value.sum{|game| game.shots.to_f}
       total_goals = value.sum{|game| game.goals.to_f}
-      (total_goals/total_shots *100).round(2)
+      ((total_goals/total_shots) *100).round(2)
     end
   end
 
@@ -70,10 +64,6 @@ class SeasonStats < LeagueStats
   def least_accurate_team_id(season_id)
     min = ratio_of_shots(season_id).min_by{|team_id, ratio| ratio}
     min.first
-  end
-
-  def find_team_by_id(team_id)
-    teams.find {|team| team.team_id == team_id}
   end
 
   def most_accurate_team(season_id)
