@@ -1,5 +1,6 @@
+require_relative "./league"
 
-class SeasonData
+class SeasonStats < LeagueStats
 
   def all_games_per_season(season_id)
     games.select do |game|
@@ -95,13 +96,13 @@ class SeasonData
     max_id = total_tackles_team_per_season(season_id).max_by do |key, value|
        value
     end.first
-    get_team_name_with_id(max_id)
+    find_team_by_id(max_id).team_name
   end
 
   def fewest_tackles(season_id)
     min_id = total_tackles_team_per_season(season_id).min_by do |key, value|
        value
     end.first
-    get_team_name_with_id(min_id)
+    find_team_by_id(min_id).team_name
   end
 end

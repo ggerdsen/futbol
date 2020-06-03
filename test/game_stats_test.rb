@@ -1,23 +1,11 @@
-require './lib/game'
-require './lib/game_collection'
-require 'minitest/autorun'
+
+require_relative "./helper_test"
 require 'minitest/pride'
 require './lib/game_stats'
 
 class GameStatsTest < Minitest::Test
   def setup
-    game_path = './test/data/games.csv'
-    team_path = './test/data/teams.csv'
-    game_teams_path = './test/data/game_teams.csv'
-
-    locations = {
-      games: game_path,
-      teams: team_path,
-      game_teams: game_teams_path
-    }
-
-    @game_stats = GameStats.new(locations)
-    # @game_stats.collect_data
+    @game_stats = GameStats.new('./test/data/games.csv', './test/data/teams.csv', './test/data/game_teams.csv')
   end
 
   def test_it_exists

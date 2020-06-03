@@ -1,6 +1,17 @@
-require_relative "./lib/league_collection"
+require "csv"
+require_relative "./game"
+require_relative "./team"
+require_relative "./game_team"
+require_relative "./modules/fetchable"
 
-class League
+class LeagueStats
+  include Fetchable
+  attr_reader :games, :teams, :game_teams
+  def initialize(game_path, team_path, game_team_path)
+    @games = fetch_data(game_path, Game)
+    @teams = fetch_data(team_path, Team)
+    @game_teams = fetch_data(game_team_path, GameTeam)
+  end
 
   def count_of_teams
     teams.count
@@ -110,5 +121,4 @@ class League
     end
     find_team_by_id(lowest_average_score.first).team_name
   end
-
 end

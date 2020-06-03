@@ -1,6 +1,6 @@
-require_relative "./lib/league_collection"
+require_relative "./game_stats"
 
-class TeamStatistics
+class TeamStats < GameStats
 
   def team_info(team_id)
     return_hash = {}
@@ -33,6 +33,25 @@ class TeamStatistics
     end
     combined_array
   end
+
+  # def group_teams_by_win(team_id)
+  #   hash = {}
+  #   games_array(team_id).each do |game|
+  #     hash[game.team_id] = games_array(team_id).select{|g| g.result == "WIN"}
+  #   end
+  #   hash
+  #
+  #   x = hash.transform_value do |games|
+  #     games.count
+  #   end
+  #
+  #   id = x.max_by {|key, value| value}[0]
+  #
+  #   teams.find do |team|
+  #     team.team_id == id
+  #   end.team_name
+  #
+  # end
 
   def find_seasons(team_id)
     win_hash = Hash.new(0)
@@ -116,5 +135,4 @@ class TeamStatistics
     id =opponent_percentage_wins(team_id).max_by{|k,v| v}.first
     find_team_by_id(id).team_name
   end
-
 end

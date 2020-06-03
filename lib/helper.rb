@@ -1,7 +1,0 @@
-require "csv"
-require_relative "./game_collection"
-require_relative "./team_collection"
-require_relative "./game_team_collection"
-require_relative "./game"
-require_relative "./team"
-require_relative "./game_team"

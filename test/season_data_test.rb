@@ -1,14 +1,12 @@
-require "simplecov"
-SimpleCov.start
-require "minitest/autorun"
+require_relative "./helper_test"
 require "./lib/season_data"
 
-class SeasonDataTest < Minitest::Test
+class SeasonStatsTest < Minitest::Test
   def setup
-    @season = SeasonData.new('./test/data/games.csv', './test/data/teams.csv', './test/data/game_teams.csv')
+    @season = SeasonStats.new('./test/data/games.csv', './test/data/teams.csv', './test/data/game_teams.csv')
   end
   def test_it_exist
-    assert_instance_of SeasonData, @season
+    assert_instance_of SeasonStats, @season
   end
 
   def test_tracker_has_all_games_per_season
@@ -115,7 +113,7 @@ class SeasonDataTest < Minitest::Test
   end
 
   def test_tracker_can_get_team_name_with_id
-    assert_equal "Sporting Kansas City", @season.get_team_name_with_id("5")
+    assert_equal "Sporting Kansas City", @season.find_team_by_id("5").team_name
   end
 
   def test_tracker_has_the_most_tackles
