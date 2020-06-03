@@ -40,4 +40,9 @@ class TeamStatsTest < Minitest::Test
   def test_it_can_return_favorite_opponent_string
     assert_equal "New York City FC", @team_stats.favorite_opponent(8)
   end
+
+  def test_it_can_return_rival_string
+    assert_equal "New York City FC", @team_stats.rival(8)
+  end
+  
 end
