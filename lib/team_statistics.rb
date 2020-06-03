@@ -32,6 +32,8 @@ class TeamStats < GameStats
       end
     end
     combined_array
+    require "pry"
+    binding.pry
   end
 
   def find_seasons(team_id)
