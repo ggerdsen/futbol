@@ -37,4 +37,20 @@ class GameTest < Minitest::Test
     assert_equal "Toyota Stadium", @game.venue
     assert_equal "/api/v1/venues/null", @game.venue_link
   end
+
+  def test_it_has_a_hash
+    expected = {
+              :game_id=>"2012030221",
+              :away_goals=>2,
+              :away_team_id=>3,
+              :date_time=>"5/16/13",
+              :home_goals=>3,
+              :home_team_id=>6,
+              :season=>"20122013",
+              :type=>"Postseason",
+              :venue=>"Toyota Stadium",
+              :venue_link=>"/api/v1/venues/null"
+            }
+    assert_equal expected, @game.to_hash
+  end
 end
