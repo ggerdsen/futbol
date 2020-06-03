@@ -1,4 +1,4 @@
-require "minitest/autorun"
+require_relative "./helper_test"
 require "./lib/team_statistics"
 
 class TeamStatsTest < Minitest::Test

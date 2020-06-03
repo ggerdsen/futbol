@@ -1,6 +1,4 @@
-require "simplecov"
-SimpleCov.start
-require "minitest/autorun"
+require_relative "./helper_test"
 require "./lib/season_data"
 
 class SeasonStatsTest < Minitest::Test
