@@ -94,7 +94,7 @@ class SeasonStatsTest < Minitest::Test
     assert_equal "New York City FC", @season.most_accurate_team("20122013")
   end
 
-  def test_tracker_has_the_accurate_team
+  def test_tracker_has_the_least_accurate_team
     assert_equal "Sporting Kansas City", @season.least_accurate_team("20122013")
   end
 
