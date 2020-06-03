@@ -32,9 +32,26 @@ class TeamStats < GameStats
       end
     end
     combined_array
-    require "pry"
-    binding.pry
   end
+
+  # def group_teams_by_win(team_id)
+  #   hash = {}
+  #   games_array(team_id).each do |game|
+  #     hash[game.team_id] = games_array(team_id).select{|g| g.result == "WIN"}
+  #   end
+  #   hash
+  #
+  #   x = hash.transform_value do |games|
+  #     games.count
+  #   end
+  #
+  #   id = x.max_by {|key, value| value}[0]
+  #
+  #   teams.find do |team|
+  #     team.team_id == id
+  #   end.team_name
+  #
+  # end
 
   def find_seasons(team_id)
     win_hash = Hash.new(0)
@@ -118,5 +135,4 @@ class TeamStats < GameStats
     id =opponent_percentage_wins(team_id).max_by{|k,v| v}.first
     find_team_by_id(id).team_name
   end
-
 end
